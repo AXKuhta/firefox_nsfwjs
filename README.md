@@ -1,6 +1,6 @@
-This is a Firefox extension based around [NSFWJS](https://github.com/infinitered/nsfwjs) library.
+#### This is a Firefox extension based around [NSFWJS](https://github.com/infinitered/nsfwjs) library.
 
-It checks every image on the page and hides the NSFW ones. 
+#### It checks every image on the page and hides the NSFW ones. 
 
 For now it's tuned to work only on old.reddit.com, and only on images — no GIFs or videos.
 
