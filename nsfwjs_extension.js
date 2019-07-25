@@ -28,6 +28,7 @@ async function loadImage(src) {
 	return new Promise((resolve, reject) => {
 		let img = new Image();
 		img.onload = () => resolve(img);
+		img.onerror = () => resolve(null);
 		img.crossOrigin = 'anonymous';
 		img.src = src;
 	})
@@ -56,11 +57,17 @@ async function getAllUncheckedImages() {
 		if (imgArray[i].parentElement.classList.contains('nsfwjs_checked')) continue;
 		if (imgArray[i].tagName == 'VIDEO') continue; // A hack to skip videos
 		
-		// Get a copy of the new image into a separate array
-		newImageArray[newImageCounter] = await loadImage(imgArray[i].src);
-		
 		// Get a parent of the <img>. We'll be slapping text onto it
 		newParentArray[newImageCounter] = imgArray[i].parentElement;
+		
+		// Get a copy of the new image into a separate array
+		newImageArray[newImageCounter] = await loadImage(imgArray[i].src);
+		if (!newImageArray[newImageCounter]) {
+			// If an image fails to load, ditch it
+			console.log('Failed to load',imgArray[i].src);
+			newParentArray[newImageCounter].classList.toggle('nsfwjs_checked');
+			continue;
+		}
 		
 		// Hide the source image or object
 		newParentArray[newImageCounter].style.visibility = 'hidden';
