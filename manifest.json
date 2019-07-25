@@ -1,0 +1,40 @@
+{
+
+  "manifest_version": 2,
+  "name": "NSFWJS Image Checker",
+  "version": "1.0",
+ 
+  "description": "Checks every image on the page with NSFWJS and blurs inappropriate images.",
+  "icons": {
+    "48": "icons/48.png"
+  },
+
+  "applications": {
+    "gecko": {
+      "id": "nfswjs@none",
+      "strict_min_version": "45.0"
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.reddit.com/*"],
+      "js": ["tfjs_1.0.4.js", "nsfwjs_bundle.js", "nsfwjs_extension.js"]
+    }
+  ],
+  
+  "permissions": [
+	"*://*.reddit.com/*",
+	"*://*.redd.it/*",
+	"*://*.thumbs.redditmedia.com/*",
+	"*://*.imgur.com/*",
+    "privacy",
+    "storage",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  
+   "web_accessible_resources": [
+   "/*"
+  ]
+}
