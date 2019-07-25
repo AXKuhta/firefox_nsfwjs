@@ -9,3 +9,5 @@ Load the extension by opening up about:debugging, clicking "Load Temporary Add-o
 You can test it out on r/confusedboners — they've got quite a wide variety of images, from confusing SFW to actual porn.
 
 This here is just a buggy and incomplete proof of concept. If someone wants to pick up on this — absolutely go ahead!
+
+Note: the NSFWJS library here has had some modifications done to it so that it works fully locally, in case you want to change it to upstream version.
